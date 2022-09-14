@@ -2,7 +2,7 @@
 using Demo.Domain;
 using Microsoft.AspNetCore.Mvc;
 
-namespace demo.Controllers
+namespace Demo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

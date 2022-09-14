@@ -1,4 +1,4 @@
-using demo.Controllers;
+using Demo.Controllers;
 using Demo.DataAccess.Repositories;
 using Demo.Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -16,8 +16,9 @@ namespace Demo.UnitTests
             _fooRepository = Substitute.For<IRepository<Foo>>();
             _controller = new TestController(_fooRepository);
         }
+
         [Fact]
-        public async void TestController_GetAction_MustReTurnOkObjectResult()
+        public async void TestController_GetAction_MustReturnOkObjectResult()
         {
             _fooRepository.GetAll().Returns(Enumerable.Empty<Foo>());
             var result = await _controller.Test();

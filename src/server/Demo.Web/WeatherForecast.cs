@@ -1,4 +1,4 @@
-namespace demo
+namespace Demo
 {
     public class WeatherForecast
     {
