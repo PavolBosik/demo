@@ -16,11 +16,11 @@ namespace demo.Controllers
         }
 
         [HttpGet]
-        public IActionResult Test()
+        public async Task<ActionResult<IEnumerable<Foo>>> Test()
         {
             try
             {
-                var result = _fooRepository.GetAll();
+                var result = await _fooRepository.GetAll();
                 return Ok(result);
             }
             catch (Exception ex)

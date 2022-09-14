@@ -2,6 +2,6 @@
 {
     public interface IRepository<T>
     {
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
     }
 }
