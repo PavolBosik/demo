@@ -4,14 +4,13 @@ namespace Demo.DataAccess.Repositories
 {
     public class FooRepository : RepositoryBase<Foo>
     {
-        public override Task<IEnumerable<Foo>> GetAll()
+        public override async IAsyncEnumerable<Foo> GetAll()
         {
-            IEnumerable<Foo> output = new List<Foo>
+            for(int i = 1; i <= 2; i++)
             {
-                new Foo {Id = 1, Name = "test1"},
-                new Foo {Id = 2, Name = "test2"}
-            };
-            return Task.FromResult(output);
+                yield return new Foo { Id = i, Name = $"test{i}"};
+            }
+            await Task.CompletedTask;
         }
     }
 }

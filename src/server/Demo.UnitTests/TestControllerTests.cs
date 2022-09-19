@@ -3,6 +3,7 @@ using Demo.DataAccess.Repositories;
 using Demo.Domain;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
+using System.Linq;
 
 namespace Demo.UnitTests
 {
@@ -18,11 +19,11 @@ namespace Demo.UnitTests
         }
 
         [Fact]
-        public async void TestController_GetAction_MustReturnOkObjectResult()
+        public void TestController_GetAction_MustReturnOkObjectResult()
         {
-            _fooRepository.GetAll().Returns(Enumerable.Empty<Foo>());
-            var result = await _controller.Test();
-            var actionResult = Assert.IsType<ActionResult<IEnumerable<Foo>>>(result);
+            _fooRepository.GetAll().Returns(AsyncEnumerable.Empty<Foo>());
+            var result = _controller.Test();
+            var actionResult = Assert.IsType<ActionResult<IAsyncEnumerable<Foo>>>(result);
             Assert.IsType<OkObjectResult>(actionResult.Result);
         }
     }

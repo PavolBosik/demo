@@ -4,7 +4,7 @@
         where T : class
     {
         //TODO: Implement later when real DB data access is needed
-        public virtual Task<IEnumerable<T>> GetAll()
+        public virtual IAsyncEnumerable<T> GetAll()
         {
             throw new NotImplementedException();
         }
