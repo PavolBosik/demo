@@ -1,9 +1,15 @@
 import React from "react";
 import { useGetWeatherForecastQuery } from "./weatherSlice";
 
+interface IWeatherData {
+  date: string;
+  temperatureC: number;
+  temperatureF: number;
+  summary: string
+}
+
 const Weather = () => {
-  // @ts-ignore
-  const { data, isLoading, isError } = useGetWeatherForecastQuery();
+  const { data, isLoading, isError } = useGetWeatherForecastQuery<{data:IWeatherData[];isLoading:boolean;isError:boolean}>('');
   const getImageForFun = (summary: string) => {
     switch (summary) {
       case "Scorching": {
