@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  # Trigger this workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allow to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build_server:
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/dotnet/sdk:6.0-jammy-amd64
+    steps:
+      # Check-out the repository under $GITHUB_WORKSPACE
+      - uses: actions/checkout@v3
+
+      - name: Build Server
+        run: |
+          cd src/server
+          dotnet build
+  build_client:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Starting NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: |
+          cd src/client
+          npm install
+      - name: build project
+        run: |
+          cd src/client
+          npm run build
+      - name: unit tests
+        run: |
+          cd src/client
+          npm run test:unit
+      - name: lint
+        run: |
+          cd src/client
+          npm run lint
