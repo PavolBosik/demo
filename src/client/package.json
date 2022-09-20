@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test:unit": "react-scripts test --watchAll",
+    "test:unit": "react-scripts test --watchAll=false --passWithNoTests",
     "lint": "node ./scripts/eslint.js",
     "eject": "react-scripts eject"
   },
