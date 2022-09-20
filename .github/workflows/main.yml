@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_test_server:
+  Server:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/dotnet/sdk:6.0-jammy-amd64
     steps:
@@ -23,18 +23,21 @@ jobs:
           cd src/server
           dotnet test --logger:trx
 
+      # A workaround to prevent the next step from failing due to git detecting dubious ownership in workspace root
+      # (see https://github.com/webispy/checkpatch-action/issues/16#issuecomment-1196353910)
       - name: Disable git safe repository checks
         run: git config --global --add safe.directory "*"
+
       - name: Create Unit Tests Report
         uses: dorny/test-reporter@v1
         if: success() || failure() # run this step even if the previous step failed
         with:
-          name: Unit Tests              # Name of the check run which will be created
+          name: Server Unit Tests              # Name of the check run which will be created
           working-directory: src/server
           path: '*/TestResults/*.trx'   # Path to test results
           reporter: dotnet-trx          # Format of test results
 
-  build_client:
+  Client:
     runs-on: ubuntu-latest
     strategy:
       matrix:
