@@ -11,17 +11,26 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_server:
+  build_and_test_server:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/dotnet/sdk:6.0-jammy-amd64
     steps:
       # Check-out the repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
 
-      - name: Build Server
+      - name: Build Server and execute Unit Tests
         run: |
           cd src/server
-          dotnet build
+          dotnet test --logger:trx
+
+      - name: Create Unit Tests Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure() # run this step even if the previous step failed
+        with:
+          name: Unit Tests                     # Name of the check run which will be created
+          path: src/server/*/TestResults/*.trx # Path to test results
+          reporter: dotnet-trx                 # Format of test results
+
   build_client:
     runs-on: ubuntu-latest
     strategy:
