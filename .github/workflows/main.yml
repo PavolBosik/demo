@@ -27,9 +27,10 @@ jobs:
         uses: dorny/test-reporter@v1
         if: success() || failure() # run this step even if the previous step failed
         with:
-          name: Unit Tests                     # Name of the check run which will be created
-          path: src/server/*/TestResults/*.trx # Path to test results
-          reporter: dotnet-trx                 # Format of test results
+          name: Unit Tests              # Name of the check run which will be created
+          working-directory: src/server # Start in a subdirectory, to prevent the action from failing due to git detecting dubious ownership in workspace root (see https://github.com/webispy/checkpatch-action/issues/16#issuecomment-1196353910)
+          path: '*/TestResults/*.trx'   # Path to test results
+          reporter: dotnet-trx          # Format of test results
 
   build_client:
     runs-on: ubuntu-latest
