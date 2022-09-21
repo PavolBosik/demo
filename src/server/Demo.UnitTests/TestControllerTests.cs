@@ -18,12 +18,13 @@ namespace Demo.UnitTests
         }
 
         [Fact]
-        public async void TestController_GetAction_MustReturnOkObjectResult()
+        public async Task EmptyRepository_GetAction_ReturnsOk()
         {
-            _fooRepository.GetAll().Returns(Enumerable.Empty<Foo>());
-            var result = await _controller.Test();
-            var actionResult = Assert.IsType<ActionResult<IEnumerable<Foo>>>(result);
-            Assert.IsType<OkObjectResult>(actionResult.Result);
+            _fooRepository.GetAll().Returns(AsyncEnumerable.Empty<Foo>());
+            var result = _controller.Test();
+            var objectResult = Assert.IsType<OkObjectResult>(result.Result);
+            var dataCollection = Assert.IsAssignableFrom<IAsyncEnumerable<Foo>>(objectResult.Value);
+            Assert.False(await dataCollection.AnyAsync());
         }
     }
 }
