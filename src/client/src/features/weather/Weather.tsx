@@ -51,7 +51,7 @@ const Weather = () => {
         >
             {!isLoading &&
                 !isError &&
-                data.map((w: any) => (
+                data.map((w) => (
                     <div
                         style={{
                             padding: '2px',
