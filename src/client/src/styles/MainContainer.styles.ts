@@ -4,9 +4,11 @@ interface IAppContainer {
     dark: boolean
 }
 
-export const AppContainer = styled.div<IAppContainer>`
-    max-width: 1400px;
+export const AppContainer = styled.div`
+    max-width: 1440px;
     margin: auto;
     padding: 0;
+`
+export const RootContainer = styled.div<IAppContainer>`
     background-color: ${(p: IAppContainer) => (p.dark ? '#3d3d3d' : '#ffffff')};
 `
