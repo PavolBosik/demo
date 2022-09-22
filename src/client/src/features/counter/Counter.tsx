@@ -65,6 +65,7 @@ export function Counter() {
                 >
                     Add If Odd
                 </CounterButton>
+                <div style={{ display: 'none' }}>Test</div>
             </CounterContainer>
         </div>
     )
