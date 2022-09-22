@@ -15,9 +15,9 @@ export const NavbarContainer = styled.nav`
 export const SwitchThemeButton = styled.div<ITheme>`
     box-shadow: inset 0 1px 0 0 #ffffff;
     background: ${(props) =>
-        props.dark
+        !props.dark
             ? 'linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%)'
-            : '#666666'};
+            : '#f8f8f8'};
     border-radius: 6px;
     border: 1px solid #dcdcdc;
     display: inline-block;
