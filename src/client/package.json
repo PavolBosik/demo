@@ -23,7 +23,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test:unit": "react-scripts test --watchAll=false --passWithNoTests --ci --reporters=default --reporters=jest-junit",
-        "lint": "node ./scripts/eslint.js",
+        "lint": "eslint . --ext .ts",
         "eject": "react-scripts eject",
         "format": "npx prettier --write ."
     },
