@@ -9,60 +9,58 @@ import {
   incrementIfOdd,
   selectCount,
 } from './counterSlice';
-import styles from './Counter.module.css';
+import {CounterButton, CounterContainer, CounterInputTextBox, CounterText} from "./Counter.styles";
 
 export function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
-
   const incrementValue = Number(incrementAmount) || 0;
-
+  const {dark} = useAppSelector(state=>state.theme)
   return (
     <div>
-      <div className={styles.row}>
-        <button
-          className={styles.button}
+      <CounterContainer>
+        <CounterButton
           aria-label="Decrement value"
+          dark={dark}
           onClick={() => dispatch(decrement())}
         >
           -
-        </button>
-        <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
+        </CounterButton>
+        <CounterText dark={dark}>{count}</CounterText>
+        <CounterButton
+            dark={dark}
+            aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           +
-        </button>
-      </div>
-      <div className={styles.row}>
-        <input
-          className={styles.textbox}
+        </CounterButton>
+      </CounterContainer>
+      <CounterContainer>
+        <CounterInputTextBox
           aria-label="Set increment amount"
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
+        <CounterButton
+            dark={dark}
+            onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
+        </CounterButton>
+        <CounterButton
+            dark={dark}
+            onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
+        </CounterButton>
+        <CounterButton
+            dark={dark}
+            onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
           Add If Odd
-        </button>
-      </div>
+        </CounterButton>
+      </CounterContainer>
     </div>
   );
 }
