@@ -43,6 +43,7 @@ export function Counter() {
             </CounterContainer>
             <CounterContainer>
                 <CounterInputTextBox
+                    dark={dark}
                     aria-label="Set increment amount"
                     value={incrementAmount}
                     onChange={(e) => setIncrementAmount(e.target.value)}
