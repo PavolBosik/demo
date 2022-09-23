@@ -46,7 +46,10 @@ jobs:
         run: cd src/server/Demo.Web; dotnet restore; dotnet publish -r linux-x64 --configuration "Release" --self-contained "true" -o ../output;
         
       - name: Generate deployment package 
-        run: cd src/server/output; zip ../Demo.Web.zip *;
+        uses: vimtor/action-zip@v1
+        with:
+          files: src/server/output/*
+          dest: src/server/Demo.Web.zip
         
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v16
