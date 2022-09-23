@@ -60,7 +60,7 @@ jobs:
           environment_name: Demo-env
           version_label: ${{ github.run_id }}
           region: us-west-2
-          deployment_package: Demo.Web.zip
+          deployment_package: src/server/Demo.Web.zip
 
   Client:
     runs-on: ubuntu-latest
