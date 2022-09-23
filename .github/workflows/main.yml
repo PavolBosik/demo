@@ -36,6 +36,28 @@ jobs:
           working-directory: src/server
           path: '*/TestResults/*.trx'   # Path to test results
           reporter: dotnet-trx          # Format of test results
+      
+      - name: Dotnet run
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '6.0' # SDK Version to use; x will use the latest version of the 3.1 channel
+          
+      - name: Publish 
+        run: cd src/server/Demo.Web; dotnet restore; dotnet publish -r linux-x64 --configuration "Release" --self-contained "true" -o ../output;
+        
+      - name: Generate deployment package 
+        run: cd output; zip ../Demo.Web.zip *;
+        
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v16
+        with:
+          aws_access_key: AKIA6K7Z5I6DSLJLEEA7    # move to environment secrets ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: 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        # move to environment secrets ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: Demo
+          environment_name: Demo-env
+          version_label: ${{ github.run_id }}
+          region: us-west-2
+          deployment_package: Demo.Web.zip
 
   Client:
     runs-on: ubuntu-latest
