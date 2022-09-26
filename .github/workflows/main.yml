@@ -107,4 +107,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_REGION: us-west-2
-          SOURCE_DIR: "build"
+          SOURCE_DIR: "src/client/build"
