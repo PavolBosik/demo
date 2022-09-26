@@ -21,7 +21,11 @@ interface IWeatherData {
         | 'Mild'
 }
 
-const Weather = () => {
+interface IWeather {
+    language: string
+}
+
+const Weather: React.FC<IWeather> = ({ language }) => {
     const { data, isLoading, isError } = useGetWeatherForecastQuery<{
         data: IWeatherData[]
         isLoading: boolean
@@ -44,7 +48,7 @@ const Weather = () => {
                         <div>{t(w.summary)}</div>
                         <div>{w.temperatureC}</div>
                         <div>
-                            {new Date(w.date).toLocaleDateString(undefined, {
+                            {new Date(w.date).toLocaleDateString(language, {
                                 weekday: 'long',
                                 year: 'numeric',
                                 month: 'long',

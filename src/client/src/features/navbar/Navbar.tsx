@@ -9,15 +9,14 @@ import { changeTheme } from '../theme/themeSlice'
 import { availableLanguages } from '../../i18n'
 import { useTranslation } from 'react-i18next'
 
-const Navbar = () => {
+interface INavbar {
+    onChangeLanguage: (e: React.ChangeEvent<HTMLSelectElement>) => void
+}
+
+const Navbar: React.FC<INavbar> = ({ onChangeLanguage }) => {
     const dispatch = useAppDispatch()
     const { dark } = useAppSelector((state) => state.theme)
-    const { t, i18n } = useTranslation()
-    const handleChangeLanguage = (
-        event: React.ChangeEvent<HTMLSelectElement>
-    ) => {
-        i18n.changeLanguage(event.target.value)
-    }
+    const { t } = useTranslation()
     return (
         <NavbarContainer>
             <SwitchThemeButton
@@ -26,10 +25,7 @@ const Navbar = () => {
             >
                 {t('switchTheme')}
             </SwitchThemeButton>
-            <SwitchLanguage
-                dark={dark}
-                onChange={(e) => handleChangeLanguage(e)}
-            >
+            <SwitchLanguage dark={dark} onChange={(e) => onChangeLanguage(e)}>
                 {availableLanguages.map((e) => (
                     <option key={e} value={e}>
                         {e}
