@@ -1,0 +1,20 @@
+{
+  "common": {
+    "addAmount": "Pridať čiastku",
+    "addAsync": "Pridať asynchrónne",
+    "addIfOdd": "Pridajte, ak je to nepárne",
+    "switchTheme": "Zmeň tému"
+  },
+  "weather": {
+    "Hot": "Horúce",
+    "Balmy": "М'яко",
+    "Warm": "Teplý",
+    "Freezing": "Mraziaci",
+    "Scorching": "Spaľujúce",
+    "Bracing": "Osviežujúco",
+    "Sweltering": "Sparný",
+    "Cool": "????????",
+    "Chilly": "Chladný",
+    "Mild": "Mierne"
+  }
+}

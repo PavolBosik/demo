@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import '../../i18n'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import {
     decrement,
@@ -15,6 +15,7 @@ import {
     CounterInputTextBox,
     CounterText,
 } from './Counter.styles'
+import { useTranslation } from 'react-i18next'
 
 export function Counter() {
     const count = useAppSelector(selectCount)
@@ -22,6 +23,7 @@ export function Counter() {
     const [incrementAmount, setIncrementAmount] = useState('2')
     const incrementValue = Number(incrementAmount) || 0
     const { dark } = useAppSelector((state) => state.theme)
+    const { t } = useTranslation()
     return (
         <div>
             <CounterContainer>
@@ -52,19 +54,19 @@ export function Counter() {
                     dark={dark}
                     onClick={() => dispatch(incrementByAmount(incrementValue))}
                 >
-                    Add Amount
+                    {t('addAmount')}
                 </CounterButton>
                 <CounterButton
                     dark={dark}
                     onClick={() => dispatch(incrementAsync(incrementValue))}
                 >
-                    Add Async
+                    {t('addAsync')}
                 </CounterButton>
                 <CounterButton
                     dark={dark}
                     onClick={() => dispatch(incrementIfOdd(incrementValue))}
                 >
-                    Add If Odd
+                    {t('addIfOdd')}
                 </CounterButton>
                 <div style={{ display: 'none' }}>Test</div>
             </CounterContainer>
