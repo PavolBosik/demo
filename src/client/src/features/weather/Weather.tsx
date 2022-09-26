@@ -3,11 +3,22 @@ import { useGetWeatherForecastQuery } from './weatherSlice'
 import { getWeatherImage } from '../../utils/getWeatherImage'
 import { WeatherContainer, WeatherElement } from './Weather.styles'
 import { useAppSelector } from '../../app/hooks'
+import { useTranslation } from 'react-i18next'
 interface IWeatherData {
     date: string
     temperatureC: number
     temperatureF: number
-    summary: string
+    summary:
+        | 'Hot'
+        | 'Balmy'
+        | 'Warm'
+        | 'Freezing'
+        | 'Scorching'
+        | 'Bracing'
+        | 'Sweltering'
+        | 'Cool'
+        | 'Chilly'
+        | 'Mild'
 }
 
 const Weather = () => {
@@ -17,6 +28,7 @@ const Weather = () => {
         isError: boolean
     }>('')
     const { dark } = useAppSelector((state) => state.theme)
+    const { t } = useTranslation('weather')
     return (
         <WeatherContainer>
             {!isLoading &&
@@ -27,9 +39,9 @@ const Weather = () => {
                             src={getWeatherImage(w.summary)}
                             width={100}
                             height={100}
-                            alt={w.summary}
+                            alt={t(w.summary)}
                         />
-                        <div>{w.summary}</div>
+                        <div>{t(w.summary)}</div>
                         <div>{w.temperatureC}</div>
                         <div>
                             {new Date(w.date).toLocaleDateString(undefined, {

@@ -1,0 +1,20 @@
+{
+  "common": {
+    "addAmount": "Add Amount",
+    "addAsync": "Add Async",
+    "addIfOdd": "Add If Odd",
+    "switchTheme": "Switch Theme"
+  },
+  "weather": {
+    "Hot": "Hot",
+    "Balmy": "Balmy",
+    "Warm": "Warm",
+    "Freezing": "Freezing",
+    "Scorching": "Scorching",
+    "Bracing": "Bracing",
+    "Sweltering": "Sweltering",
+    "Cool": "Cool",
+    "Chilly": "Chilly",
+    "Mild": "Mild"
+  }
+}
