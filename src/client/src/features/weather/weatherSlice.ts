@@ -2,10 +2,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const weatherApiSlice = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5231' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'http://demo-env.eba-tbphsf83.us-west-2.elasticbeanstalk.com/',
+    }),
     endpoints: (builder) => ({
         getWeatherForecast: builder.query({
-            query: () => 'WeatherForecast',
+            query: () => 'weatherforecast',
         }),
     }),
 })
