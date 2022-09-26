@@ -48,7 +48,8 @@ jobs:
       - name: Generate deployment package 
         uses: vimtor/action-zip@v1
         with:
-          files: src/server/output/*
+          files: src/server/output/
+          recursive: false
           dest: src/server/Demo.Web.zip
         
       - name: Deploy to EB
