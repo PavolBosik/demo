@@ -15,7 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
-	<Content Include=".ebextensions\**" >
+	<Content Include=".ebextensions\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	<Content Include=".platform\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	</Content>
   </ItemGroup>
