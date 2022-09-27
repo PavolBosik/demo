@@ -11,9 +11,10 @@ import { useTranslation } from 'react-i18next'
 
 interface INavbar {
     onChangeLanguage: (e: React.ChangeEvent<HTMLSelectElement>) => void
+    language: string
 }
 
-const Navbar: React.FC<INavbar> = ({ onChangeLanguage }) => {
+const Navbar: React.FC<INavbar> = ({ onChangeLanguage, language }) => {
     const dispatch = useAppDispatch()
     const { dark } = useAppSelector((state) => state.theme)
     const { t } = useTranslation()
@@ -25,7 +26,11 @@ const Navbar: React.FC<INavbar> = ({ onChangeLanguage }) => {
             >
                 {t('switchTheme')}
             </SwitchThemeButton>
-            <SwitchLanguage dark={dark} onChange={(e) => onChangeLanguage(e)}>
+            <SwitchLanguage
+                dark={dark}
+                onChange={(e) => onChangeLanguage(e)}
+                defaultValue={language}
+            >
                 {availableLanguages.map((e) => (
                     <option key={e} value={e}>
                         {e}

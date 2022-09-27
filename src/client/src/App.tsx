@@ -9,7 +9,10 @@ import Weather from './features/weather/Weather'
 import { useTranslation } from 'react-i18next'
 
 function App() {
-    const [language, setLanguage] = useState('en')
+    const lsi18NSetting = localStorage.getItem('i18nextLng')
+    const [language, setLanguage] = useState(
+        lsi18NSetting ? lsi18NSetting : 'en'
+    )
     const { dark } = useAppSelector((state) => state.theme)
     const { i18n } = useTranslation()
     const handleChangeLanguage = (
@@ -21,7 +24,10 @@ function App() {
     return (
         <RootContainer dark={dark}>
             <AppContainer className="App">
-                <Navbar onChangeLanguage={handleChangeLanguage} />
+                <Navbar
+                    onChangeLanguage={handleChangeLanguage}
+                    language={language}
+                />
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <Counter />
