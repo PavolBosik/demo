@@ -19,9 +19,14 @@ Last but not least, we want to verify that all team members have the required de
 
 ## What we would like / consider to incorporate:
 * FE side
-  * Translation
-  * Theming ? (at least light/dark theme)
+  * React Router Dom V5 vs V6 ?
+  * Storybook ?
+  * GraphQL:
+    * Apollo Client ?
+    * URQL graphql ?
+    * RTK Query + graphql-request ?
   * Automatic End-to-end tests
+  * AWS Lex ?
 * BE side
   * DB + auto roll-forward mechanism
   * Docker ?
