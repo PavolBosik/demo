@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
-import Routes from './routes'
-import Navbar from '../features/navbar/Navbar'
+import Routes from './Routes'
+import Navbar from '../components/navbar/Navbar'
 import { HashRouter } from 'react-router-dom'
 
 const Router: React.FC = (): ReactElement => {

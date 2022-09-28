@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes as BaseRoutes } from 'react-router-dom'
-import Counter from '../features/counter/Counter'
-import Weather from '../features/weather/Weather'
+import Counter from '../components/counter/Counter'
+import Weather from '../components/weather/Weather'
 
 import { ApplicationLocations } from '../types/common/applications-locations.dto'
 

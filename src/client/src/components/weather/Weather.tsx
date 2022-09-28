@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetWeatherForecastQuery } from './weatherSlice'
+import { useGetWeatherForecastQuery } from '../../store/weatherSlice'
 import { WeatherContainer } from './Weather.styles'
 import WeatherCard from './WeatherCard'
 interface IWeatherData {

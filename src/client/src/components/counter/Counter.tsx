@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import '../../i18n'
 import logo from '../../logo_takeda.png'
 
-import { useAppSelector, useAppDispatch } from '../../app/hooks'
+import {
+    useTypedSelector,
+    useTypedDispatch,
+} from '../../hooks/useTypedReduxHooks'
 import {
     decrement,
     increment,
@@ -10,7 +13,7 @@ import {
     incrementAsync,
     incrementIfOdd,
     selectCount,
-} from './counterSlice'
+} from '../../store/counterSlice'
 import {
     CounterButton,
     CounterContainer,
@@ -20,11 +23,11 @@ import {
 import { useTranslation } from 'react-i18next'
 
 const Counter = () => {
-    const count = useAppSelector(selectCount)
-    const dispatch = useAppDispatch()
+    const count = useTypedSelector(selectCount)
+    const dispatch = useTypedDispatch()
     const [incrementAmount, setIncrementAmount] = useState('2')
     const incrementValue = Number(incrementAmount) || 0
-    const { dark } = useAppSelector((state) => state.theme)
+    const { dark } = useTypedSelector((state) => state.theme)
     const { t } = useTranslation()
     return (
         <div>

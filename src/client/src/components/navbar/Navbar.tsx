@@ -4,16 +4,19 @@ import {
     SwitchLanguage,
     SwitchThemeButton,
 } from './Navbar.styles'
-import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeLanguage, changeTheme } from '../theme/themeSlice'
+import {
+    useTypedDispatch,
+    useTypedSelector,
+} from '../../hooks/useTypedReduxHooks'
+import { changeLanguage, changeTheme } from '../../store/themeSlice'
 import { availableLanguages } from '../../i18n'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { ApplicationLocations } from '../../types/common/applications-locations.dto'
 
 const Navbar: React.FC = () => {
-    const dispatch = useAppDispatch()
-    const { dark, language } = useAppSelector((state) => state.theme)
+    const dispatch = useTypedDispatch()
+    const { dark, language } = useTypedSelector((state) => state.theme)
     const { t, i18n } = useTranslation()
 
     const handleChangeLanguage = (

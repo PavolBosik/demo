@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { AppThunk } from '../../app/store'
+import { AppThunk } from './store'
 
 export interface ThemeState {
     dark: boolean
-    language:string
+    language: string
 }
 
 const lsi18NSetting = localStorage.getItem('i18nextLng')
 
 const initialState: ThemeState = {
     dark: false,
-    language: lsi18NSetting?lsi18NSetting:'en'
+    language: lsi18NSetting ? lsi18NSetting : 'en',
 }
 
 export const themeSlice = createSlice({
@@ -30,8 +30,10 @@ export const { themeChanged, languageChanged } = themeSlice.actions
 export const changeTheme = (): AppThunk => (dispatch) => {
     dispatch(themeChanged())
 }
-export const changeLanguage = (language:string): AppThunk => (dispatch) => {
-    dispatch(languageChanged(language))
-}
+export const changeLanguage =
+    (language: string): AppThunk =>
+    (dispatch) => {
+        dispatch(languageChanged(language))
+    }
 
 export default themeSlice.reducer

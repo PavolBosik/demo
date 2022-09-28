@@ -1,7 +1,7 @@
 import React from 'react'
 import { WeatherElement } from './Weather.styles'
 import { getWeatherImage } from '../../utils/getWeatherImage'
-import { useAppSelector } from '../../app/hooks'
+import { useTypedSelector } from '../../hooks/useTypedReduxHooks'
 import { useTranslation } from 'react-i18next'
 
 export interface IWeatherData {
@@ -27,7 +27,7 @@ const WeatherCard: React.FC<IWeatherData> = ({
     temperatureF,
     summary,
 }) => {
-    const { language, dark } = useAppSelector((state) => state.theme)
+    const { language, dark } = useTypedSelector((state) => state.theme)
     const { t } = useTranslation('weather')
 
     return (
