@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import '../../i18n'
+import logo from '../../logo_takeda.png'
+
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import {
     decrement,
@@ -17,7 +19,7 @@ import {
 } from './Counter.styles'
 import { useTranslation } from 'react-i18next'
 
-export function Counter() {
+const Counter = () => {
     const count = useAppSelector(selectCount)
     const dispatch = useAppDispatch()
     const [incrementAmount, setIncrementAmount] = useState('2')
@@ -26,6 +28,8 @@ export function Counter() {
     const { t } = useTranslation()
     return (
         <div>
+            <img src={logo} className="App-logo" alt="logo" />
+
             <CounterContainer>
                 <CounterButton
                     aria-label="Decrement value"
@@ -73,3 +77,5 @@ export function Counter() {
         </div>
     )
 }
+
+export default Counter
