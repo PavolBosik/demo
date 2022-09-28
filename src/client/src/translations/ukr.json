@@ -3,7 +3,9 @@
     "addAmount": "Додати кількість",
     "addAsync": "Додати асинхронно",
     "addIfOdd": "Додати, якщо непарне",
-    "switchTheme": "Змінити тему"
+    "switchTheme": "Змінити тему",
+    "home": "Додому",
+    "weather": "Погода"
   },
   "weather": {
     "Hot": "Гаряче",

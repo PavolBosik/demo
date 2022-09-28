@@ -1,8 +1,6 @@
 import React from 'react'
 import { useGetWeatherForecastQuery } from './weatherSlice'
-import { WeatherContainer, WeatherElement } from './Weather.styles'
-import { useAppSelector } from '../../app/hooks'
-import { useTranslation } from 'react-i18next'
+import { WeatherContainer } from './Weather.styles'
 import WeatherCard from './WeatherCard'
 interface IWeatherData {
     // dark?: string

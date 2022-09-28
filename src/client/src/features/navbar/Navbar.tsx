@@ -47,13 +47,13 @@ const Navbar: React.FC = () => {
                 dark={dark}
                 onClick={() => navigate(ApplicationLocations.HOME)}
             >
-                {'HOME'}
+                {t('home')}
             </SwitchThemeButton>
             <SwitchThemeButton
                 dark={dark}
                 onClick={() => navigate(ApplicationLocations.WEATHER)}
             >
-                {'WEATHER'}
+                {t('weather')}
             </SwitchThemeButton>
         </NavbarContainer>
     )
