@@ -3,7 +3,9 @@
     "addAmount": "Add Amount",
     "addAsync": "Add Async",
     "addIfOdd": "Add If Odd",
-    "switchTheme": "Switch Theme"
+    "switchTheme": "Switch Theme",
+    "home":"Home",
+    "weather":"Weather"
   },
   "weather": {
     "Hot": "Hot",

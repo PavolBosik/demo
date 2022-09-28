@@ -5,19 +5,25 @@ import {
     SwitchThemeButton,
 } from './Navbar.styles'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
-import { changeTheme } from '../theme/themeSlice'
+import { changeLanguage, changeTheme } from '../theme/themeSlice'
 import { availableLanguages } from '../../i18n'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import { ApplicationLocations } from '../../types/common/applications-locations.dto'
 
-interface INavbar {
-    onChangeLanguage: (e: React.ChangeEvent<HTMLSelectElement>) => void
-    language: string
-}
-
-const Navbar: React.FC<INavbar> = ({ onChangeLanguage, language }) => {
+const Navbar: React.FC = () => {
     const dispatch = useAppDispatch()
-    const { dark } = useAppSelector((state) => state.theme)
-    const { t } = useTranslation()
+    const { dark, language } = useAppSelector((state) => state.theme)
+    const { t, i18n } = useTranslation()
+
+    const handleChangeLanguage = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        i18n.changeLanguage(event.target.value).then()
+        dispatch(changeLanguage(event.target.value))
+    }
+
+    const navigate = useNavigate()
     return (
         <NavbarContainer>
             <SwitchThemeButton
@@ -28,7 +34,7 @@ const Navbar: React.FC<INavbar> = ({ onChangeLanguage, language }) => {
             </SwitchThemeButton>
             <SwitchLanguage
                 dark={dark}
-                onChange={(e) => onChangeLanguage(e)}
+                onChange={(e) => handleChangeLanguage(e)}
                 defaultValue={language}
             >
                 {availableLanguages.map((e) => (
@@ -37,6 +43,18 @@ const Navbar: React.FC<INavbar> = ({ onChangeLanguage, language }) => {
                     </option>
                 ))}
             </SwitchLanguage>
+            <SwitchThemeButton
+                dark={dark}
+                onClick={() => navigate(ApplicationLocations.HOME)}
+            >
+                {t('home')}
+            </SwitchThemeButton>
+            <SwitchThemeButton
+                dark={dark}
+                onClick={() => navigate(ApplicationLocations.WEATHER)}
+            >
+                {t('weather')}
+            </SwitchThemeButton>
         </NavbarContainer>
     )
 }

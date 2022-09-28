@@ -9,7 +9,7 @@ export const NavbarContainer = styled.nav`
     height: 10%;
     padding-top: 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 `
 export const SwitchThemeButton = styled.div<ITheme>`
@@ -29,6 +29,7 @@ export const SwitchThemeButton = styled.div<ITheme>`
     font-size: 15px;
     font-weight: bold;
     padding: 6px 24px;
+    margin:10px;
     text-decoration: none;
     text-shadow: 0 1px 0 #ffffff;
     &:hover {

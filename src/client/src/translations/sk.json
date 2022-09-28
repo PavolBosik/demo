@@ -3,18 +3,20 @@
     "addAmount": "Pridať čiastku",
     "addAsync": "Pridať asynchrónne",
     "addIfOdd": "Pridajte, ak je to nepárne",
-    "switchTheme": "Zmeň tému"
+    "switchTheme": "Zmeň tému",
+    "home":"Domov",
+    "weather":"Počasie"
   },
   "weather": {
-    "Hot": "Horúce",
-    "Balmy": "М'яко",
-    "Warm": "Teplý",
-    "Freezing": "Mraziaci",
-    "Scorching": "Spaľujúce",
+    "Hot": "Horúco",
+    "Balmy": "Komfortne",
+    "Warm": "Teplo",
+    "Freezing": "Mrazivo",
+    "Scorching": "Spaľujúco",
     "Bracing": "Osviežujúco",
-    "Sweltering": "Sparný",
-    "Cool": "????????",
-    "Chilly": "Chladný",
+    "Sweltering": "Sparno",
+    "Cool": "Trochu zima",
+    "Chilly": "Chladno",
     "Mild": "Mierne"
   }
 }

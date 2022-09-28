@@ -1,10 +1,9 @@
 import React from 'react'
 import { useGetWeatherForecastQuery } from './weatherSlice'
-import { getWeatherImage } from '../../utils/getWeatherImage'
-import { WeatherContainer, WeatherElement } from './Weather.styles'
-import { useAppSelector } from '../../app/hooks'
-import { useTranslation } from 'react-i18next'
+import { WeatherContainer } from './Weather.styles'
+import WeatherCard from './WeatherCard'
 interface IWeatherData {
+    // dark?: string
     date: string
     temperatureC: number
     temperatureF: number
@@ -21,41 +20,24 @@ interface IWeatherData {
         | 'Mild'
 }
 
-interface IWeather {
-    language: string
-}
-
-const Weather: React.FC<IWeather> = ({ language }) => {
+const Weather: React.FC = () => {
     const { data, isLoading, isError } = useGetWeatherForecastQuery<{
         data: IWeatherData[]
         isLoading: boolean
         isError: boolean
     }>('')
-    const { dark } = useAppSelector((state) => state.theme)
-    const { t } = useTranslation('weather')
     return (
         <WeatherContainer>
             {!isLoading &&
                 !isError &&
-                data.map((w) => (
-                    <WeatherElement dark={dark} key={w.date}>
-                        <img
-                            src={getWeatherImage(w.summary)}
-                            width={100}
-                            height={100}
-                            alt={t(w.summary)}
-                        />
-                        <div>{t(w.summary)}</div>
-                        <div>{w.temperatureC}</div>
-                        <div>
-                            {new Date(w.date).toLocaleDateString(language, {
-                                weekday: 'long',
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                            })}
-                        </div>
-                    </WeatherElement>
+                data.map((weather, index) => (
+                    <WeatherCard
+                        key={index}
+                        date={weather.date}
+                        temperatureC={weather.temperatureC}
+                        temperatureF={weather.temperatureF}
+                        summary={weather.summary}
+                    />
                 ))}
         </WeatherContainer>
     )
