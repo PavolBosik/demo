@@ -11,9 +11,11 @@ export const WeatherContainer = styled.div`
     gap: 2px 2px;
     @media (max-width: 760px) {
         grid-template-columns: 1fr 1fr;
+        grid-template-areas: '. .';
     }
     @media (max-width: 375px) {
         grid-template-columns: 1fr;
+        grid-template-areas: '.';
     }
 `
 export const WeatherElement = styled.div<IAppContainer>`
