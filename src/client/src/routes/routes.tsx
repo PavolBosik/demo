@@ -1,4 +1,5 @@
-import React, { Route, Routes as BaseRoutes } from 'react-router-dom'
+import React from 'react'
+import { Route, Routes as BaseRoutes } from 'react-router-dom'
 import Counter from '../features/counter/Counter'
 import Weather from '../features/weather/Weather'
 

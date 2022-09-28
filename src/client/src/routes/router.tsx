@@ -1,14 +1,14 @@
 import React, { ReactElement } from 'react'
-import { BrowserRouter } from 'react-router-dom'
 import Routes from './routes'
 import Navbar from '../features/navbar/Navbar'
+import { HashRouter } from 'react-router-dom'
 
 const Router: React.FC = (): ReactElement => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Navbar />
             <Routes />
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 
