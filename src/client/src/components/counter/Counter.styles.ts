@@ -51,3 +51,23 @@ export const CounterText = styled.span<ITheme>`
     font-weight: 400;
     color: ${(props) => (props.dark ? 'rgb(255,255,255)' : 'rgb(238 22 31)')};
 `
+export const CounterLogo = styled.img`
+    height: 40vmin;
+    pointer-events: none;
+    @keyframes App-logo-float {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(10px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        & {
+            animation: App-logo-float infinite 3s ease-in-out;
+        }
+    }
+`

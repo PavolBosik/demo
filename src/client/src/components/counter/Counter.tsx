@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../../i18n'
-import logo from '../../logo_takeda.png'
+import logo from './logo_takeda.png'
 
 import {
     useTypedSelector,
@@ -18,6 +18,7 @@ import {
     CounterButton,
     CounterContainer,
     CounterInputTextBox,
+    CounterLogo,
     CounterText,
 } from './Counter.styles'
 import { useTranslation } from 'react-i18next'
@@ -31,7 +32,7 @@ const Counter = () => {
     const { t } = useTranslation()
     return (
         <div>
-            <img src={logo} className="App-logo" alt="logo" />
+            <CounterLogo src={logo} className="App-logo" alt="logo" />
 
             <CounterContainer>
                 <CounterButton

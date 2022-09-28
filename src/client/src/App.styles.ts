@@ -9,6 +9,7 @@ export const AppContainer = styled.div`
     margin: auto;
     padding: 0;
     height: 100vh;
+    text-align: center;
 `
 export const RootContainer = styled.div<IAppContainer>`
     background-color: ${(p: IAppContainer) => (p.dark ? '#3d3d3d' : '#ffffff')};
