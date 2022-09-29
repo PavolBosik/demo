@@ -1,9 +1,8 @@
-﻿namespace Demo.Domain
-{
-    public class Foo
-    {
-        public int Id { get; set; }
+﻿namespace Demo.Domain;
 
-        public string? Name { get; set; }
-    }
+public class Foo
+{
+    public int Id { get; set; }
+
+    public string? Name { get; set; }
 }
